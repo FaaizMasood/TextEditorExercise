@@ -9,11 +9,11 @@
  * Update the output text as a user types in the textarea
  * HINT: Use the onkeydown function inside HTML
  */
-function updateText() {
+updateText = () => {
   // CODE GOES HERE
   let text = document.getElementById("text-input").value;
   document.getElementById("text-output").innerText = text;
-}
+};
 
 /**
  * Toggle the bold class for the output text
@@ -22,19 +22,19 @@ function updateText() {
  * HINT: Use the classList property
  * HINT: Toggle .active class for the button
  */
-function makeBold(elem) {
+makeBold = (elem) => {
   //CODE GOES HERE
   elem.classList.toggle("active");
   document.getElementById("text-output").classList.toggle("bold");
-}
+};
 
 /**
  * Toggle the italic class for the output text
  */
-function makeItalic(elem) {
+makeItalic = (elem) => {
   elem.classList.toggle("active");
   document.getElementById("text-output").classList.toggle("italic");
-}
+};
 
 /**
  * Toggle the underline class for the output text
@@ -42,7 +42,7 @@ function makeItalic(elem) {
  * HINT: Use the classList property
  * HINT: Use contains, remove, and add functions
  */
-function makeUnderline(elem) {
+makeUnderline = (elem) => {
   //CODE GOES HERE
   elem.classList.toggle("active");
   let formatted_text = document.getElementById("text-output");
@@ -51,7 +51,7 @@ function makeUnderline(elem) {
   } else {
     formatted_text.classList.add("underline");
   }
-}
+};
 
 /**
  * Toggle the style textAlign attribute
@@ -59,13 +59,22 @@ function makeUnderline(elem) {
  * HINT: Use the style property of the element
  * HINT: Make sure to untoggle the active state for all other align buttons
  */
-function alignText(elem, alignType) {
+alignText = (elem, alignType) => {
   // CODE GOES HERE
   elem.classList.toggle("active");
   document.getElementById("text-output").style.textAlign = alignType;
   let buttonsList = document.getElementsByClassName("align");
-  for (let i = 0; i < buttonsList.length; i++) {
-    buttonsList[i].classList.remove("active");
+
+  for (let buttons of buttonsList) {
+    buttons.classList.remove("active");
   }
+
+  // buttonsList.map((button) => {
+  //   button.classList.remove("active");
+  // }); --- >  cant use this because this only works for arrays and buttonList is a collection of HTML
+
+  // for (let i = 0; i < buttonsList.length; i++) {
+  //   buttonsList[i].classList.remove("active");
+  // }
   elem.classList.add("active");
-}
+};
